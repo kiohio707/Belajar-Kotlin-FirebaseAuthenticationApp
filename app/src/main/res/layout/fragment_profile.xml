@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EEEEEE"
     tools:context=".fragment.ProfileFragment">
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -51,37 +52,55 @@
                 android:id="@+id/et_mail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="32dp"
+                android:enabled="false"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
-                app:layout_constraintEnd_toEndOf="@+id/et_name"
-                app:layout_constraintStart_toStartOf="@+id/et_name"
+                app:layout_constraintEnd_toStartOf="@+id/iv_verify"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/et_name" />
-
-            <EditText
-                android:id="@+id/et_phone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:hint="Phone Number"
-                android:inputType="phone"
-                app:layout_constraintEnd_toEndOf="@+id/et_mail"
-                app:layout_constraintStart_toStartOf="@+id/et_mail"
-                app:layout_constraintTop_toBottomOf="@+id/et_mail" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:text="Save"
                 android:textColor="#FFFFFF"
                 app:cornerRadius="10dp"
-                app:layout_constraintEnd_toEndOf="@+id/et_phone"
-                app:layout_constraintStart_toStartOf="@+id/et_phone"
-                app:layout_constraintTop_toBottomOf="@+id/et_phone" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_mail" />
+
+            <ImageView
+                android:id="@+id/iv_verify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="21dp"
+                android:src="@drawable/ic_verified"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/et_mail"
+                app:layout_constraintEnd_toEndOf="@+id/et_name"
+                app:layout_constraintTop_toTopOf="@+id/et_mail"
+                tools:visibility="\
+" />
+
+            <ImageView
+                android:id="@+id/iv_unverify"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="21dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_unverified"
+                app:layout_constraintBottom_toBottomOf="@+id/et_mail"
+                app:layout_constraintEnd_toEndOf="@+id/et_name"
+                app:layout_constraintStart_toEndOf="@+id/et_mail"
+                app:layout_constraintTop_toTopOf="@+id/et_mail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

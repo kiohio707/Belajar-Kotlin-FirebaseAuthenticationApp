@@ -58,6 +58,9 @@ dependencies {
     //Firebase Storage
     implementation 'com.google.firebase:firebase-storage-ktx:20.0.0'
 
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     testImplementation 'junit:junit:4.13.2'
 
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
