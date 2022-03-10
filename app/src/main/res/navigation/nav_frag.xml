@@ -14,5 +14,18 @@
         android:id="@+id/menu_profile"
         android:name="com.example.firebaseauthenticationapp.fragment.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_update_email"
+            app:destination="@id/updateEmailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateEmailFragment"
+        android:name="com.example.firebaseauthenticationapp.fragment.UpdateEmailFragment"
+        android:label="UpdateEmailFragment"
+        tools:layout="@layout/fragment_update_email">
+        <action
+            android:id="@+id/action_email_updated"
+            app:destination="@id/menu_profile" />
+    </fragment>
 </navigation>

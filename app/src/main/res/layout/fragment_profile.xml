@@ -55,7 +55,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="32dp"
-                android:enabled="false"
+                android:focusableInTouchMode="false"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toStartOf="@+id/iv_verify"
@@ -79,28 +79,30 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="28dp"
                 android:layout_marginBottom="21dp"
                 android:src="@drawable/ic_verified"
                 android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/et_mail"
-                app:layout_constraintEnd_toEndOf="@+id/et_name"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/et_mail"
-                tools:visibility="\
-" />
+                app:layout_constraintVertical_bias="0.187"
+                tools:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/iv_unverify"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginBottom="21dp"
-                android:visibility="gone"
                 android:src="@drawable/ic_unverified"
+                android:visibility="gone"
                 app:layout_constraintBottom_toBottomOf="@+id/et_mail"
-                app:layout_constraintEnd_toEndOf="@+id/et_name"
-                app:layout_constraintStart_toEndOf="@+id/et_mail"
-                app:layout_constraintTop_toTopOf="@+id/et_mail" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/et_mail"
+                app:layout_constraintVertical_bias="0.187"
+                tools:visibility="visible" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

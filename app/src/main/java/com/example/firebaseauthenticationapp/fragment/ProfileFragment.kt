@@ -11,6 +11,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
+import com.example.firebaseauthenticationapp.activity.HomeActivity
 import com.example.firebaseauthenticationapp.databinding.FragmentProfileBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
@@ -85,7 +88,7 @@ class ProfileFragment : Fragment() {
 
             UserProfileChangeRequest.Builder()
                 .setDisplayName(name)
-                .setPhotoUri(imageUri)
+                .setPhotoUri(image)
                 .build().also {
                     user?.updateProfile(it)?.addOnCompleteListener {
                         if (it.isSuccessful) {
@@ -95,6 +98,31 @@ class ProfileFragment : Fragment() {
                         }
                     }
                 }
+        }
+
+        with(binding) {
+            ivUnverify.setOnClickListener { 
+                user?.sendEmailVerification()?.addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        Toast.makeText(activity, "Email Verifikasi telah Dikirim", Toast.LENGTH_SHORT).show()
+                        Intent(requireContext(), HomeActivity::class.java).also {
+                            //It's for no turning back after back button pressed
+                            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            startActivity(it)
+                        }
+                    } else {
+                        Toast.makeText(activity, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+
+        with(binding) {
+            etMail.setOnClickListener {
+                val actonUpdateEmail = ProfileFragmentDirections.actionUpdateEmail()
+                Navigation.findNavController(it).navigate(actonUpdateEmail)
+            }
+
         }
     }
 

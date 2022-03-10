@@ -35,6 +35,9 @@ class HomeActivity : AppCompatActivity() {
         val appBarConfiguration =
             AppBarConfiguration.Builder(R.id.menu_home, R.id.menu_profile).build()
 
+        /*val appBarConfiguration =
+            AppBarConfiguration(navController.graph)*/
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         binding.botNav.setupWithNavController(navController)
 
@@ -59,6 +62,5 @@ class HomeActivity : AppCompatActivity() {
             }
             else -> return true
         }
-
     }
 }

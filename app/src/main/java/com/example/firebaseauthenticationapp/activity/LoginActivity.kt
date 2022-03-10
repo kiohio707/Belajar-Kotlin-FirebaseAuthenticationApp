@@ -20,8 +20,6 @@ class LoginActivity : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-
-
         binding.btnRegister.setOnClickListener {
             Intent(this, RegisterActivity::class.java).also {
                 startActivity(it)
@@ -61,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
         auth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    Intent(this, HomeActivity::class.java).also {
+                    Intent(this, LoginActivity::class.java).also {
                         //Biar pas tekan back button ga balik ke register atau login activity
                         it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                         startActivity(it)
