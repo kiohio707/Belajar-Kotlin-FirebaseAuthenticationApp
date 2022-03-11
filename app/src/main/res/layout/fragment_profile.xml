@@ -66,13 +66,13 @@
                 android:id="@+id/btn_update"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="8dp"
                 android:text="Save"
                 android:textColor="#FFFFFF"
                 app:cornerRadius="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_mail" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_change_password" />
 
             <ImageView
                 android:id="@+id/iv_verify"
@@ -103,6 +103,17 @@
                 app:layout_constraintTop_toTopOf="@+id/et_mail"
                 app:layout_constraintVertical_bias="0.187"
                 tools:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tv_change_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Change Password"
+                android:textColor="#1B57EA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/et_mail" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

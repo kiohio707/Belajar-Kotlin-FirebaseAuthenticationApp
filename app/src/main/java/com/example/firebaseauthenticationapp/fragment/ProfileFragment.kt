@@ -7,11 +7,13 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
 import androidx.navigation.ui.NavigationUI
 import com.example.firebaseauthenticationapp.activity.HomeActivity
 import com.example.firebaseauthenticationapp.databinding.FragmentProfileBinding
@@ -92,26 +94,34 @@ class ProfileFragment : Fragment() {
                 .build().also {
                     user?.updateProfile(it)?.addOnCompleteListener {
                         if (it.isSuccessful) {
-                            Toast.makeText(requireContext(), "Profile Updated", Toast.LENGTH_SHORT).show()
+                            Toast.makeText(requireContext(), "Profile Updated", Toast.LENGTH_SHORT)
+                                .show()
                         } else {
-                            Toast.makeText(activity, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(activity, it.exception.toString(), Toast.LENGTH_SHORT)
+                                .show()
                         }
                     }
                 }
         }
 
         with(binding) {
-            ivUnverify.setOnClickListener { 
+            ivUnverify.setOnClickListener {
                 user?.sendEmailVerification()?.addOnCompleteListener {
                     if (it.isSuccessful) {
-                        Toast.makeText(activity, "Email Verifikasi telah Dikirim", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            activity,
+                            "Email Verifikasi telah Dikirim",
+                            Toast.LENGTH_SHORT
+                        ).show()
                         Intent(requireContext(), HomeActivity::class.java).also {
                             //It's for no turning back after back button pressed
-                            it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                            it.flags =
+                                Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             startActivity(it)
                         }
                     } else {
-                        Toast.makeText(activity, "${it.exception?.message}", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(activity, "${it.exception?.message}", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 }
             }
@@ -119,10 +129,19 @@ class ProfileFragment : Fragment() {
 
         with(binding) {
             etMail.setOnClickListener {
-                val actonUpdateEmail = ProfileFragmentDirections.actionUpdateEmail()
-                Navigation.findNavController(it).navigate(actonUpdateEmail)
+                val actionUpdateEmail = ProfileFragmentDirections.actionUpdateEmail()
+                Navigation.findNavController(it).navigate(actionUpdateEmail)
             }
 
+        }
+
+        with(binding) {
+            tvChangePassword.setOnClickListener {
+                val actionChangePassword = ProfileFragmentDirections.actionChangePassword()
+                Navigation.findNavController(it).navigate(actionChangePassword)
+
+
+            }
         }
     }
 
@@ -142,7 +161,6 @@ class ProfileFragment : Fragment() {
     }
 
 
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -150,7 +168,8 @@ class ProfileFragment : Fragment() {
             val imgBitmap = data?.extras?.get("data") as Bitmap
             uploadImage(imgBitmap)
         } else {
-            Toast.makeText(context, "Error onActivityResult : $requestCode", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Error onActivityResult : $requestCode", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
@@ -176,4 +195,6 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
+
 }

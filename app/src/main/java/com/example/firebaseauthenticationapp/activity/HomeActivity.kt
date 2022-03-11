@@ -6,10 +6,9 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.example.firebaseauthenticationapp.R
 import com.example.firebaseauthenticationapp.databinding.ActivityHomeBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -17,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     lateinit var auth: FirebaseAuth
+    lateinit var appBarConfiguration: AppBarConfiguration
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,13 +32,16 @@ class HomeActivity : AppCompatActivity() {
 
         val navController =
             (supportFragmentManager.findFragmentById(R.id.nav_host_container) as NavHostFragment).navController
-        val appBarConfiguration =
-            AppBarConfiguration.Builder(R.id.menu_home, R.id.menu_profile).build()
 
         /*val appBarConfiguration =
-            AppBarConfiguration(navController.graph)*/
+            AppBarConfiguration.Builder(R.id.menu_home, R.id.menu_profile).build()*/
+
+        appBarConfiguration =
+            AppBarConfiguration(navController.graph)
+
 
         setupActionBarWithNavController(navController, appBarConfiguration)
+
         binding.botNav.setupWithNavController(navController)
 
 
@@ -63,4 +66,11 @@ class HomeActivity : AppCompatActivity() {
             else -> return true
         }
     }
+
+    override fun onSupportNavigateUp(): Boolean {
+        val navController = this.findNavController(R.id.nav_host_container)
+
+        return navController.navigateUp()
+    }
+
 }
